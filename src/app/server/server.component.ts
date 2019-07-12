@@ -2,8 +2,12 @@ import { Component } from '@angular/core';
 
 @Component({
 	selector: 'app-server',
-	templateUrl: './server.component.html',
-	styleUrls: []
+  templateUrl: './server.component.html',
+  styles: [`
+    .online {
+      color: white;
+    }
+  `]
 })
 export class ServerComponent{
   serverId: number = 10;
@@ -14,7 +18,7 @@ export class ServerComponent{
   }
 
   getServerStatus() {
-	  console.log("t.sS: ",this.serverStatus);
+	  // console.log("t.sS: ",this.serverStatus);
     return this.serverStatus;
   }
 

@@ -6,5 +6,21 @@
         <app-servers></app-servers>
     </div>
   </div>
-</div>
+  <div class="row">
+    <div class="col-xs 12">
+      <button class="btn btn-primary" (click)="toggleText()">
+        Display Details
+      </button>
+      <p [hidden]="!textShow">
+        Here's a secret paragraph dude - like password = tuna, right?
+      </p>
+      <div *ngFor="let click of clicks; let i = index"
+      [ngStyle]="{backgroundColor: i >= 4 ? 'blue' : 'transparent' }"
+      [ngClass]="{'white-text': i >= 4 }"
+      >
+        {{ click }}
+      </div>
+    </div>
+  </div>
 
+</div>
