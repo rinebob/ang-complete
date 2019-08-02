@@ -1,13 +1,11 @@
-import { EventEmitter } from '@angular/core';
+import { EventEmitter, Injectable } from '@angular/core';
 import { Recipe } from './recipe.model';
 import { Ingredient } from '../shared/ingredient.model';
+import { ShoppingListService } from '../shopping-list/shopping-list.service';
 
+@Injectable()
 export class RecipeService {
   recipeSelected = new EventEmitter<Recipe>();
-  sendToShoppingList = new EventEmitter<Ingredient[]>();
-
-  // recipe = Recipe;
-  ingredients = [];
 
   private recipes: Recipe[] = [
 		new Recipe('A Test Recipe Dude', 'Hey it tastes really good!', 'https://coastguard.dodlive.mil/files/2014/11/photo-1.jpg', [
@@ -26,17 +24,15 @@ export class RecipeService {
     ]),
   ];
 
+  constructor(private shoppingListService: ShoppingListService) {}
+
   getRecipes() {
     // console.log('recipe service.  recipes: ',this.recipes)
     return this.recipes.slice();
   }
 
-  addToShoppingList(name) {
-    const recipe = this.recipes.filter( recipe =>  recipe.name === name )
-    console.log('recipe.s.ts addToList.  recipe[0]: ',recipe[0]);
-    this.ingredients = recipe[0].ingredients;
-    this.ingredients.forEach( ingredient => console.log(ingredient));
-    this.sendToShoppingList.emit(this.ingredients);
-}
+  addToShoppingList(ingredients: Ingredient[]) {
+    this.shoppingListService.addIngredients(ingredients);
+  }
 
 }

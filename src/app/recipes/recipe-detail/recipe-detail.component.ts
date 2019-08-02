@@ -22,8 +22,8 @@ export class RecipeDetailComponent implements OnInit {
     this.menuOpen = !this.menuOpen
   }
 
-  toShoppingList(name) {
-    this.recipeService.addToShoppingList(name);
+  onAddToShoppingList() {
+    this.recipeService.addToShoppingList(this.recipe.ingredients);
 }
 
 }
