@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+	loadedFeature = 'recipe';
+
+	@Input() showRecipes: {showRecipes: boolean, showShoppingList: boolean};
+	@Input() showShoppingList: {showRecipes: boolean, showShoppingList: boolean};
+
   title = 'ang-complete';
+  name = 'Dude...';
+	onNavigate(feature: string) {
+		this.loadedFeature = feature;
+
+	}
+
 }
