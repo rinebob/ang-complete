@@ -6,16 +6,8 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-	loadedFeature = 'recipe';
-
-	@Input() showRecipes: {showRecipes: boolean, showShoppingList: boolean};
-	@Input() showShoppingList: {showRecipes: boolean, showShoppingList: boolean};
-
-  title = 'ang-complete';
+	title = 'Recipe Central';
   name = 'Dude...';
-	onNavigate(feature: string) {
-		this.loadedFeature = feature;
 
-	}
 
 }
